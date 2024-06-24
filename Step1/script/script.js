@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const useNameError = document.getElementById("usernameError");
     const passwordError = document.getElementById("passwordError");
 
+    const userNameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
 
     useNameError.textContent = " ";
     password.textContent = " ";
@@ -29,5 +31,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if (valid) {
       form.submit();
     }
+  });
+  userNameInput.addEventListener("input", () => {
+    userNameInput.classList.remove("error");
+    useNameError.textContent = "";
+  });
+  passwordInput.addEventListener("input", () => {
+    passwordError.textContent = "";
+    passwordInput.classList.remove("error");
   });
 });
