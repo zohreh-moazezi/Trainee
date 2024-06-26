@@ -1,5 +1,4 @@
 const axios = window.axios;
-console.log(axios);
 const client = axios.create({
   baseURL: "http://localhost:4200/",
 });
@@ -16,6 +15,16 @@ form.addEventListener("submit", async (event) => {
 
   const usernameInput = document.getElementById("username");
   const passwordInput = document.getElementById("password");
+
+  const labels = document.querySelectorAll("label");
+
+  const inputs = document.querySelectorAll("input");
+
+  inputs.forEach((input) => {
+    if (input.value) {
+      input.classList.add("used");
+    }
+  });
 
   useNameError.textContent = " ";
   passwordError.textContent = " ";
@@ -54,6 +63,7 @@ form.addEventListener("submit", async (event) => {
       if (error.response && error.response.status === 401) {
         usernameInput.classList.add("error");
         passwordInput.classList.add("error");
+        labels.classList.add("label-error");
       }
     }
   }

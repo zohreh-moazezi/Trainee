@@ -12,7 +12,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style/style.css" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"
+      integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      defer
+    ></script>
     <script src="script/script.js" type="module" defer></script>
   </head>
   <body>
@@ -20,7 +26,11 @@
       <div class="card-media">
         <div class="asset">
           <div class="type-mark">
-            <img src="logo/zhrm-high-resolution-logo.png" alt="logo" class="vector" />
+            <img
+              src="logo/zhrm-high-resolution-logo.png"
+              alt="logo"
+              class="vector"
+            />
           </div>
         </div>
       </div>
@@ -31,13 +41,15 @@
       <div class="user-data">
         <form id="login-form">
           <div class="text-field">
-            <input type="text" placeholder="Username" id="username" />
+            <input type="text" id="username" placeholder="" />
+            <label for="username">Username</label>
             <div class="form-helper-text">
               <span class="helper-text" id="usernameError"> </span>
             </div>
           </div>
           <div class="text-field">
-            <input type="password" placeholder="Password" id="password" />
+            <input type="password" placeholder="" id="password" />
+            <label for="password">Password</label>
             <div class="form-helper-text">
               <span class="helper-text" id="passwordError"> </span>
             </div>

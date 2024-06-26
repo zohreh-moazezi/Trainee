@@ -77,28 +77,48 @@ html {
   padding: 16px 0px 0px 0px;
   margin-bottom: 20px;
 }
-
+.text-field {
+  position: relative;
+}
 input {
   width: 400px;
   height: 56px;
   padding: 0px 12px;
   border-radius: 4px;
   box-sizing: border-box;
-  outline: none;
   border: 1px solid #ccc;
 }
-
-input ::placeholder {
-  font-family: "Roboto";
-  font-size: 16px;
-  font-weight: 400;
+label {
   color: #aaa;
+  position: absolute;
+  pointer-events: none;
+  left: 12px;
+  top: 15px;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: "Roboto";
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+input:focus ~ label,
+input.used ~ label {
+  top: -10px;
+  transform: scale(0.75);
+  left: -1px;
 }
 
 input:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
 }
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  box-shadow: 0 0 0 1000px white inset !important;
+}
+
 .form-helper-text {
   width: 400px;
   height: 23px;
@@ -118,7 +138,10 @@ input:focus {
 input.error {
   border-color: #ff4d4f;
 }
-input.error:focus{
+.label-error {
+  color: #ff4d4f;
+}
+input.error:focus {
   border-color: #ff4d4f;
   box-shadow: none;
 }
@@ -145,9 +168,3 @@ input.error:focus{
 .button:hover {
   background-color: #0056b3;
 }
-
-/* .button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
-  opacity: 0.6;
-} */
