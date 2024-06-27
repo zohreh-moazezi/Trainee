@@ -63,7 +63,8 @@ form.addEventListener("submit", async (event) => {
       if (error.response && error.response.status === 401) {
         usernameInput.classList.add("error");
         passwordInput.classList.add("error");
-        labels.classList.add("label-error");
+        usernameInput.classList.add("label-error");
+        passwordInput.classList.add("label-error");
       }
     }
   }
