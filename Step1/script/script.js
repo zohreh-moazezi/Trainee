@@ -2,8 +2,7 @@ const axios = window.axios;
 const client = axios.create({
   baseURL: "http://localhost:4200/",
 });
-
-const form = document.getElementById("login-form");
+const form = document.querySelector("form");
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -18,13 +17,9 @@ form.addEventListener("submit", async (event) => {
 
   const labels = document.querySelectorAll("label");
 
-  const inputs = document.querySelectorAll("input");
-
-  inputs.forEach((input) => {
-    if (input.value) {
-      input.classList.add("used");
-    }
-  });
+  const loginForm = document.getElementById("login-form");
+  const textField = document.getElementById("text-field");
+  const inputs = document.getElementById("inputs");
 
   useNameError.textContent = " ";
   passwordError.textContent = " ";
@@ -34,11 +29,18 @@ form.addEventListener("submit", async (event) => {
   if (!username) {
     useNameError.textContent = "Enter username";
     usernameInput.classList.add("error");
+    // loginForm.style.height = "18rem";
+    textField.style.height = "4.93rem";
+    inputs.style.height="11.87rem";
     valid = false;
   }
   if (!password) {
     passwordError.textContent = "Enter password";
     passwordInput.classList.add("error");
+    // loginForm.style.height = "18rem";
+    textField.style.height = "4.93rem";
+    inputs.style.height="11.87rem";
+
     valid = false;
   }
 
@@ -61,10 +63,8 @@ form.addEventListener("submit", async (event) => {
     } catch (error) {
       console.error(error);
       if (error.response && error.response.status === 401) {
-        usernameInput.classList.add("error");
-        passwordInput.classList.add("error");
-        usernameInput.classList.add("label-error");
-        passwordInput.classList.add("label-error");
+        usernameInput.classList.add("error", "label-error");
+        passwordInput.classList.add("error", "label-error");
       }
     }
   }

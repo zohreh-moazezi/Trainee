@@ -35,25 +35,49 @@
         </div>
       </div>
       <div class="card-header">
-        <p class="title-card">Hi</p>
-        <p class="sub-header">Enter your username and password</p>
+        <div class="content">
+          <div class="title-content">
+            <p class="title-card">Express Back Office</p>
+          </div>
+          <div class="sub-header-content">
+            <p class="sub-header">Enter your username and password</p>
+          </div>
+        </div>
       </div>
-      <div class="user-data">
-        <form id="login-form">
-          <div class="text-field">
-            <input type="text" id="username" placeholder="" />
-            <label for="username">Username</label>
+      <div class="user-data" id="user-data">
+        <form class="login-form">
+          <div class="inputs" id="inputs">
+             <div class="text-field" id="text-field">
+            <input
+              type="text"
+              id="username"
+              class="input-field"
+              placeholder=""
+            />
+            <label for="username" class="labels">Username</label>
             <div class="form-helper-text">
-              <span class="helper-text" id="usernameError"> </span>
+              <div class="frame-helper-text">
+                <span class="helper-text" id="usernameError"> </span>
+              </div>
             </div>
           </div>
-          <div class="text-field">
-            <input type="password" placeholder="" id="password" />
-            <label for="password">Password</label>
+          <div class="text-field" id="text-field">
+            <input
+              type="password"
+              placeholder=""
+              class="input-field"
+              id="password"
+            />
+            <label for="password" class="labels">Password</label>
             <div class="form-helper-text">
-              <span class="helper-text" id="passwordError"> </span>
+              <div class="frame-helper-text">
+                <span class="helper-text" id="passwordError"> </span>
+              </div>
             </div>
           </div>
+          </div>
+         
+
           <button type="submit" class="button">login</button>
         </form>
       </div>
