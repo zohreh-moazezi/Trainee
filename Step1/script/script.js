@@ -1,71 +1,95 @@
+const errors = {
+  required: "Enter ",
+};
+
 const axios = window.axios;
 const client = axios.create({
   baseURL: "http://localhost:4200/",
 });
 const form = document.querySelector("form");
+
+// Separation of Concerns
+// Single Responsibility
+
+const username = document.getElementById("username");
+const password = document.getElementById("password");
+
+const useNameError = document.getElementById("usernameError");
+const passwordError = document.getElementById("passwordError");
+
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
+
+const userNameHelperTextEl = document.querySelector(
+  "#username ~ .form-helper-text"
+);
+const passwordHelperTextEl = document.querySelector(
+  "#password ~ .form-helper-text"
+);
+
+const formValidation = () => {
+  let isValid = true;
+
+  if (!username.value) {
+    userNameHelperTextEl.classList.add("show-helper-text");
+    usernameInput.classList.add("error");
+
+    useNameError.innerHTML = "Enter username";
+
+    isValid = false;
+  } else {
+    usernameInput.classList.remove("error");
+    userNameHelperTextEl.classList.remove("show-helper-text");
+    useNameError.innerHTML = "";
+  }
+
+  if (!password.value) {
+    passwordInput.classList.add("error");
+    passwordHelperTextEl.classList.add("show-helper-text");
+
+    passwordError.innerHTML = "Enter password";
+
+    isValid = false;
+  } else {
+    passwordInput.classList.remove("error");
+    passwordHelperTextEl.classList.remove("show-helper-text");
+    passwordError.innerHTML = "";
+  }
+
+  return isValid;
+};
+
+const submitRequest = async () => {
+  try {
+    const response = await client.post(`${client.defaults.baseURL}auth/login`, {
+      username: username.value,
+      password: password.value,
+    });
+    console.log(response);
+    const { access_token, refresh_token } = response.data;
+    console.log(access_token);
+    console.log(refresh_token);
+    localStorage.setItem("access token:", access_token);
+    localStorage.setItem("refresh token:", refresh_token);
+    alert("Login Successful");
+  } catch (error) {
+    console.error(error);
+    if (error.response && error.response.status === 401) {
+      usernameInput.classList.add("error", "label-error");
+      passwordInput.classList.add("error", "label-error");
+    }
+  }
+};
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+  useNameError.innerHTML = " ";
+  passwordError.innerHTML = " ";
 
-  const useNameError = document.getElementById("usernameError");
-  const passwordError = document.getElementById("passwordError");
+  const isValid = formValidation();
 
-  const usernameInput = document.getElementById("username");
-  const passwordInput = document.getElementById("password");
+  if (!isValid) return;
 
-  const labels = document.querySelectorAll("label");
-
-  const loginForm = document.getElementById("login-form");
-  const textField = document.getElementById("text-field");
-  const inputs = document.getElementById("inputs");
-
-  useNameError.textContent = " ";
-  passwordError.textContent = " ";
-
-  let valid = true;
-
-  if (!username) {
-    useNameError.textContent = "Enter username";
-    usernameInput.classList.add("error");
-    // loginForm.style.height = "18rem";
-    textField.style.height = "4.93rem";
-    inputs.style.height="11.87rem";
-    valid = false;
-  }
-  if (!password) {
-    passwordError.textContent = "Enter password";
-    passwordInput.classList.add("error");
-    // loginForm.style.height = "18rem";
-    textField.style.height = "4.93rem";
-    inputs.style.height="11.87rem";
-
-    valid = false;
-  }
-
-  if (valid) {
-    try {
-      const response = await client.post(
-        `${client.defaults.baseURL}auth/login`,
-        {
-          username: username,
-          password: password,
-        }
-      );
-      console.log(response);
-      const { access_token, refresh_token } = response.data;
-      console.log(access_token);
-      console.log(refresh_token);
-      localStorage.setItem("access token:", access_token);
-      localStorage.setItem("refresh token:", refresh_token);
-      alert("Login Successful");
-    } catch (error) {
-      console.error(error);
-      if (error.response && error.response.status === 401) {
-        usernameInput.classList.add("error", "label-error");
-        passwordInput.classList.add("error", "label-error");
-      }
-    }
-  }
+  await submitRequest();
 });
