@@ -65,10 +65,7 @@ const errors = {
         username: username.value,
         password: password.value,
       });
-      console.log(response);
       const { access_token, refresh_token } = response.data;
-      console.log(access_token);
-      console.log(refresh_token);
       localStorage.setItem("access_token", access_token);
       localStorage.setItem("refresh_token", refresh_token);
       alert("Login Successful");
