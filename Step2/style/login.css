@@ -1,0 +1,201 @@
+:root {
+    box-sizing: border-box;
+    font-size: 1rem;
+    --main-color: white;
+    --text-color: #00000099;
+    --error-color: #ff4d4f;
+    --main-font: "Roboto";
+  }
+  *,
+  ::before,
+  ::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body,
+  html {
+    height: 100dvh;
+    background-color: #f5f5f5;
+  }
+  
+  .container {
+    padding: 1.5rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card {
+    min-width: 40%;
+    background-color: var(--main-color);
+    box-shadow: 0px 1px 3px 0px #0000001f, 0px 1px 1px 0px #00000024,
+      0px 2px 1px -1px #00000033;
+    flex-direction: column;
+    border-radius: 4px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .card {
+      min-width: unset;
+      width: 100%;
+    }
+  }
+  
+  .card-media {
+    justify-content: center;
+    display: flex;
+  }
+  .asset {
+    width: 10.5rem;
+    height: 8.28rem;
+    padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+    gap: 0.625rem;
+  }
+  .type-mark {
+    width: 7.5rem;
+    height: 3.6rem;
+    padding: 0.28rem 0.1rem;
+  }
+  .vector {
+    width: 7.29rem;
+    height: 3.72rem;
+  }
+  .card-header {
+    height: 4.75rem;
+    padding: 0.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .content {
+    height: 3.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .title-card {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #000000de;
+    font-family: var(--main-font);
+    line-height: 2rem;
+    text-align: left;
+  }
+  .sub-header {
+    font-size: 0.875rem;
+    color: var(--text-color);
+    font-family: var(--main-font);
+    font-weight: 400;
+    line-height: 1.25rem;
+    text-align: left;
+  }
+  .login-form {
+    padding: 0 2.5rem 2.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputs {
+    width: 100%;
+    padding: 1rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .text-field {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .input-field {
+    width: 100%;
+    height: 3.5rem;
+    padding: 0 0.75rem;
+    border-radius: 4px;
+    border: 1px solid #0000003b;
+  }
+  .input-field:focus {
+    border-color: rgba(86, 160, 238, 0.5);
+    box-shadow: 0 0 5px rgba(12, 122, 239, 0.5);
+    outline: none;
+  }
+  .labels {
+    color: var(--text-color);
+    line-height: 1.5rem;
+    text-align: left;
+    position: absolute;
+    pointer-events: none;
+    left: 0.75rem;
+    top: 0.93rem;
+    font-weight: 400;
+    font-size: 1rem;
+    font-family: var(--main-font);
+    transition: all 0.3s ease;
+    background-color: var(--main-color);
+  }
+  
+  .input-field:focus ~ .labels,
+  .input-field:not(:placeholder-shown) ~ .labels {
+    top: -0.625rem;
+    transform: scale(0.75);
+    left: -0.06rem;
+  }
+  
+  .input-field:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px var(--main-color) inset !important;
+    box-shadow: 0 0 0 1000px var(--main-color) inset !important;
+  }
+  
+  .form-helper-text {
+    display: none;
+    width: 100%;
+    height: 1.43rem;
+    padding: 0.18rem 0.875rem 0 0.875rem;
+  }
+  
+  .show-helper-text {
+    display: block;
+  }
+  
+  .helper-text {
+    color: #d32f2f;
+    font-family: var(--main-font);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.24rem;
+    text-align: left;
+  }
+  
+  .input-field.error {
+    border-color: var(--error-color);
+  }
+  .input-field.label-error ~ .labels {
+    color: var(--error-color);
+  }
+  
+  .button {
+    width: 100%;
+    height: 2.625rem;
+    padding: 0.5rem 1.375rem;
+    border-radius: 4px;
+    background-color: #2196f3;
+    color: var(--main-color);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    box-shadow: 0px 3px 1px -2px #00000033, 0px 2px 2px 0px #00000024,
+      0px 1px 5px 0px #0000001f;
+  
+    font-family: var(--main-font);
+    font-size: 0.93rem;
+    font-weight: 500;
+    line-height: 1.625rem;
+    text-align: left;
+  }
+  

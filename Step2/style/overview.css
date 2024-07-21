@@ -1,0 +1,64 @@
+:root {
+    box-sizing: border-box;
+    --main-font: "Roboto";
+    --main-color: #000000de;
+    --border-color: #0000001f;
+    --back-color: #fafafa;
+  }
+  *,
+  ::before,
+  ::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+  body,
+  html {
+    height: 100dvh;
+  }
+  .container {
+    width: 100%;
+    height: 100%;
+    background-color: var(--back-color);
+  }
+  .header {
+    padding: 1.5rem;
+  }
+  .header > h4 {
+    font-family: var(--main-font);
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--main-color);
+  }
+  .table-container {
+    padding: 0 1.5rem;
+  }
+  
+  .table-container > table > thead > tr > td {
+    padding: 1rem 0.5rem 0.25rem 0.5rem;
+    font-family: var(--main-font);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--main-color);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .table-container > table > tbody > tr > td {
+    width: 43.5rem;
+    height: 2.25rem;
+    padding: 0.5rem;
+    border-left: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+  
+    font-family: var(--main-font);
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--main-color);
+  }
+  .table-container > table > tbody > tr:nth-child(odd) {
+    background-color: white;
+  }
+  .table-container > table > tbody > tr:nth-child(even) {
+    background-color: var(--back-color);
+  }
+  
