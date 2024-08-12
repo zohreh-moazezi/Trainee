@@ -4,7 +4,7 @@ const client = axios.create({
 });
 const accessToken = localStorage.getItem("access_token");
 
-var map = L.map("map").setView([35.702502, 51.389623], 9);
+const map = L.map("map").setView([35.702502, 51.389623], 9);
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(
   map
 );
@@ -27,7 +27,7 @@ const fetchbikers = async () => {
 
 const updateMap = (data) => {
   data.forEach((item) => {
-    var myIcon = L.icon({
+    const myIcon = L.icon({
       iconUrl: "./logo/biker.png",
       iconSize: [20, 20],
     });
