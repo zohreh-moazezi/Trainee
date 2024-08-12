@@ -4,10 +4,12 @@ const client = axios.create({
 });
 const accessToken = localStorage.getItem("access_token");
 
+const S_MAP = '<a href="https://snappfood.ir">SMapp </a> ';
+const S_MAP_URL =
+  "https://raster.snappmaps.ir/styles/snapp-style/{z}/{x}/{y}{r}.png";
+
 const map = L.map("map").setView([35.702502, 51.389623], 9);
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(
-  map
-);
+L.tileLayer(S_MAP_URL, {}).addTo(map);
 
 const fetchbikers = async () => {
   try {
