@@ -1,4 +1,5 @@
 {
+  "extends":"./tsconfig.json",
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
@@ -21,7 +22,16 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@component/*":["./component/*"],
+      "@pages/*":["./pages"],
+      "@assets/*":["./assets"],
+      "@api/*":["./api"],
+      "@theme/*":["./theme"],
+      "@utils/*":["./utils"]
+    }
   },
-  "include": ["src"]
+  "include": ["src", "eslintrc.js"]
 }
