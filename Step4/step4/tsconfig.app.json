@@ -25,12 +25,12 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./src",
     "paths": {
-      "@component/*":["./component/*"],
-      "@pages/*":["./pages"],
-      "@assets/*":["./assets"],
-      "@api/*":["./api"],
-      "@theme/*":["./theme"],
-      "@utils/*":["./utils"]
+      "@component/*":["component/*"],
+      "@pages/*":["pages/*"],
+      "@assets/*":["assets/*"],
+      "@api/*":["api/*"],
+      "@theme/*":["theme/*"],
+      "@utils/*":["utils/*"]
     }
   },
   "include": ["src", "eslintrc.js"]

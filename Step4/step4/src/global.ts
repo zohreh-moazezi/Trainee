@@ -1,7 +1,36 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const Global = createGlobalStyle`
-html, body, div, span, applet, object, iframe,
+:root {
+    box-sizing: border-box;
+    font-size: 1rem;
+    --main-color: white;
+    --text-color: #00000099;
+    --error-color: #ff4d4f;
+    --main-font: "Roboto";
+  }
+  *,
+  ::before,
+  ::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body,
+  html {
+    height: 100dvh;
+    background-color: #f5f5f5;
+  }
+  #root{
+    padding: 1.5rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -20,6 +49,10 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+  
+
+	
+
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -28,6 +61,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+
+
 }
 ol, ul {
 	list-style: none;

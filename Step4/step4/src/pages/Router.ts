@@ -1,11 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
-import OverviewPage from "./OverviewPage";
-import LoginPage from "./LoginPage";
-
+import LoginPage from "./login";
+// import OverviewPage from "./overview/OverviewPage";
 export const router = createBrowserRouter([
   { path: "/", Component: LoginPage },
-  {
-    path: "/overview",
-    Component: OverviewPage,
-  },
+  // {
+  //   path: "/overview",
+  //   Component: OverviewPage,
+  // },
 ]);
