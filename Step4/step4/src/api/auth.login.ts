@@ -1,8 +1,7 @@
-import React from "react";
-import axios from "axios";
+import axiosInstance from "./axiosInstance";
 
-export const submitRequest =async () =>{
-      const data =await  axios.post("http://localhost:4200/auth/login")
-      return data;
-}
-       
+export const authLoginPost = async () => {
+  const data = await axiosInstance.post("auth/login");
+
+  return data;
+};

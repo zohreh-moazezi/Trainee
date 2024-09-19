@@ -23,4 +23,5 @@ export const LoginButton = styled.button`
   font-weight: 500;
   line-height: 1.625rem;
   text-align: left;
+  margin-top:1rem;
 `;

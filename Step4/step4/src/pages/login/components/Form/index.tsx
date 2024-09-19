@@ -4,10 +4,10 @@ import Logo from "../Logo";
 import Texts from "../Texts";
 import Input from "@component/Input";
 import * as Styled from "./styled";
-import { Formik, Form } from "formik";
+import { Formik, Form as LoginForm } from "formik";
 import { loginSchema } from "./services/schema";
 
-const LoginForm = () => {
+const Form = (login) => {
   return (
     <>
       <Logo />
@@ -19,10 +19,10 @@ const LoginForm = () => {
             password: "",
           }}
           validationSchema={loginSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={(values) => login(values)}
         >
           {({ errors, touched }) => (
-            <Form>
+            <LoginForm>
               <Input
                 name="username"
                 type="text"
@@ -41,7 +41,7 @@ const LoginForm = () => {
               />
 
               <Button label="LOGIN" />
-            </Form>
+            </LoginForm>
           )}
         </Formik>
       </Styled.LoginForm>
@@ -49,4 +49,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default Form;

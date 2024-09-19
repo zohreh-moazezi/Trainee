@@ -9,7 +9,6 @@ export const Inputs = styled.div`
 export const TextField = styled.div`
   position: relative;
   width: 100%;
-  margin-bottom: 1rem;
 `;
 export const InputFields = styled.input<{ error?: boolean }>`
   width: 100%;
