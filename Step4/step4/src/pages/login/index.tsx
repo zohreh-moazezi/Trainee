@@ -3,7 +3,9 @@ import Form from "./components/Form";
 import { useMutation } from "@tanstack/react-query";
 import { authLoginPost } from "@api/auth.login";
 import * as Styled from "./styled";
-const LoginPage = () => {
+
+
+const LoginPage:React.FC = () => {
   const { mutate: login } = useMutation({
     mutationFn: authLoginPost,
     onSuccess: (res) => {

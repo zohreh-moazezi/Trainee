@@ -7,7 +7,14 @@ import * as Styled from "./styled";
 import { Formik, Form as LoginForm } from "formik";
 import { loginSchema } from "./services/schema";
 
-const Form = (login) => {
+
+
+interface FormProp{
+  login:(values:({username:string ; password:string})) => void 
+}
+
+
+const Form: React.FC<FormProp> = ({login}) => {
   return (
     <>
       <Logo />

@@ -12,14 +12,7 @@ interface InputProps {
   touched: FormikTouched<any>;
 }
 
-const Input: React.FC<InputProps> = ({
-  name,
-  placeholder,
-  type,
-  errors,
-  touched,
-  labelKey,
-}) => {
+const Input: React.FC<InputProps> = (props) => {
   return (
     <>
       <Styled.Inputs>
@@ -28,18 +21,22 @@ const Input: React.FC<InputProps> = ({
             render={({ field }: FieldProps) => (
               <Styled.InputFields
                 {...field}
-                name={name}
-                placeholder={placeholder}
-                type={type}
-                value={placeholder}
-                error={!!(errors[name] && touched[name])}
+                name={props.name}
+                placeholder={props.placeholder}
+                type={props.type}
+                value={props.placeholder}
+                error={
+                  !!(props.errors[props.name] && props.touched[props.name])
+                }
               />
             )}
           />
-          {errors[name] && touched[name] ? (
-            <Styled.HelperText>{errors[name] as string}</Styled.HelperText>
+          {props.errors[props.name] && props.touched[props.name] ? (
+            <Styled.HelperText>
+              {props.errors[props.name] as string}
+            </Styled.HelperText>
           ) : null}
-          <Label labelKey={labelKey} />
+          <Label labelKey={props.labelKey} />
           <Styled.FormHelperText>
             <Styled.HelperText />
           </Styled.FormHelperText>
