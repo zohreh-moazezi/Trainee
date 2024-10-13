@@ -7,14 +7,12 @@ import * as Styled from "./styled";
 import { Formik, Form as LoginForm } from "formik";
 import { loginSchema } from "./services/schema";
 
-
-
-interface FormProp{
-  login:(values:({username:string ; password:string})) => void 
+interface FormProp {
+  login: (values: { username: string; password: string }) => void;
+  authError: boolean;
 }
 
-
-const Form: React.FC<FormProp> = ({login}) => {
+const Form: React.FC<FormProp> = ({ login, authError }) => {
   return (
     <>
       <Logo />
@@ -37,6 +35,7 @@ const Form: React.FC<FormProp> = ({login}) => {
                 errors={errors}
                 touched={touched}
                 labelKey="Username"
+                authError={authError}
               />
               <Input
                 name="password"
@@ -45,9 +44,10 @@ const Form: React.FC<FormProp> = ({login}) => {
                 errors={errors}
                 touched={touched}
                 labelKey="Password"
+                authError={authError}
               />
 
-              <Button label="LOGIN" />
+              <Button label="LOGIN" type="submit" />
             </LoginForm>
           )}
         </Formik>

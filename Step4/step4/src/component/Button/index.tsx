@@ -3,12 +3,13 @@ import * as Styled from "./styled";
 
 interface ButtonProp {
   label: string;
+  type: "button" | "reset" | "submit";
 }
 
-const Button: React.FC<ButtonProp> = ({ label }) => {
+const Button: React.FC<ButtonProp> = ({ label, type = "button" }) => {
   return (
     <>
-      <Styled.LoginButton>{label}</Styled.LoginButton>
+      <Styled.LoginButton type={type}>{label}</Styled.LoginButton>
     </>
   );
 };

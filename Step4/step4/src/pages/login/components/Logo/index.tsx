@@ -8,7 +8,7 @@ const Logo = () => {
       <Styled.CardMedia>
         <Styled.Asset>
           <Styled.TypeMark>
-            <Styled.Vector src={logo} />
+            <Styled.Image src={logo} />
           </Styled.TypeMark>
         </Styled.Asset>
       </Styled.CardMedia>

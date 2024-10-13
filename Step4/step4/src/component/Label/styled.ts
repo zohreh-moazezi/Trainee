@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-export const Labels = styled.label`
-  color: var(--text-color);
-  line-height: 1.5rem;
+export const Labels = styled.label<{$error?:boolean}>`
+color:var(text-color);
+color: ${({ $error }) => ($error ? "var(--error-color)" : "var(--text-color)")};
+line-height: 1.5rem;
   text-align: left;
   position: absolute;
   pointer-events: none;

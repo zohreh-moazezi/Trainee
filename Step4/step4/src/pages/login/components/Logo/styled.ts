@@ -5,7 +5,7 @@ export const TypeMark = styled.div`
   height: 3.6rem;
   padding: 0.28rem 0.1rem;
 `;
-export const CardMedia = styled.image`
+export const CardMedia = styled.div`
   justify-content: center;
   display: flex;
 `;
@@ -16,7 +16,7 @@ export const Asset = styled.div`
   padding: 2.5rem 1.5rem 1.5rem 1.5rem;
   gap: 0.625rem;
 `;
-export const Vector = styled.img`
+export const Image = styled.img`
   width: 7.29rem;
   height: 3.72rem;
 `;

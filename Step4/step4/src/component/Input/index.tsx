@@ -1,6 +1,6 @@
 import React from "react";
 import * as Styled from "./styled";
-import { Field, FormikErrors, FormikTouched, FieldProps } from "formik";
+import { Field, FieldProps, FormikErrors, FormikTouched } from "formik";
 import Label from "@component/Label";
 
 interface InputProps {
@@ -10,6 +10,7 @@ interface InputProps {
   labelKey: string;
   errors: FormikErrors<any>;
   touched: FormikTouched<any>;
+  authError: boolean;
 }
 
 const Input: React.FC<InputProps> = (props) => {
@@ -17,26 +18,37 @@ const Input: React.FC<InputProps> = (props) => {
     <>
       <Styled.Inputs>
         <Styled.TextField>
-          <Field
-            render={({ field }: FieldProps) => (
+          <Field name={props.name}>
+            {({ field }: FieldProps) => (
               <Styled.InputFields
                 {...field}
-                name={props.name}
                 placeholder={props.placeholder}
                 type={props.type}
-                value={props.placeholder}
-                error={
-                  !!(props.errors[props.name] && props.touched[props.name])
+                $error={
+                  !!(
+                    (props.errors[props.name] && props.touched[props.name]) ||
+                    props.authError
+                  )
                 }
               />
             )}
-          />
-          {props.errors[props.name] && props.touched[props.name] ? (
+          </Field>
+
+          {(props.errors[props.name] && props.touched[props.name]) ||
+          props.authError ? (
             <Styled.HelperText>
               {props.errors[props.name] as string}
             </Styled.HelperText>
           ) : null}
-          <Label labelKey={props.labelKey} />
+          <Label
+            labelKey={props.labelKey}
+            $error={
+              !!(
+                (props.errors[props.name] && props.touched[props.name]) ||
+                props.authError
+              )
+            }
+          />
           <Styled.FormHelperText>
             <Styled.HelperText />
           </Styled.FormHelperText>

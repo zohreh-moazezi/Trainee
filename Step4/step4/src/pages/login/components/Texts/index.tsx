@@ -6,11 +6,9 @@ const Texts = () => {
     <>
       <Styled.CardHeader>
         <Styled.Content>
-          <Styled.FirstText>
-            <p>Express Back Office</p>
-          </Styled.FirstText>
+          <Styled.FirstText>Express Back Office</Styled.FirstText>
           <Styled.SecondText>
-            <p>Enter your username and password</p>
+            Enter your username and password
           </Styled.SecondText>
         </Styled.Content>
       </Styled.CardHeader>

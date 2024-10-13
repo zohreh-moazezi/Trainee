@@ -10,7 +10,7 @@ export const TextField = styled.div`
   position: relative;
   width: 100%;
 `;
-export const InputFields = styled.input<{ error?: boolean }>`
+export const InputFields = styled.input<{ $error?: boolean }>`
   width: 100%;
   height: 3.5rem;
   padding: 0 0.75rem;
@@ -33,14 +33,13 @@ export const InputFields = styled.input<{ error?: boolean }>`
     -webkit-text-fill-color: #000;
   }
 
-  ${({ error }) =>
-    error &&
+  ${({ $error }) =>
+    $error &&
     `
   border-color: var(--error-color);
   
   `}
 `;
-
 export const FormHelperText = styled.div`
   display: none;
   width: 100%;
