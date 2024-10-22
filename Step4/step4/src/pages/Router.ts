@@ -1,11 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
-import OverviewPage from "./OverviewPage";
-import LoginPage from "./LoginPage";
+import LoginPage from "./login";
 
-export const router = createBrowserRouter([
+import OverviewPage from "./overview/OverviewPage";
+import ProtectedLayout from "@api/layout/protectedLayout";
+const router = createBrowserRouter([
   { path: "/", Component: LoginPage },
+ {path:"/overview", Component:OverviewPage},
   {
-    path: "/overview",
-    Component: OverviewPage,
-  },
+    path:"/overview",
+    Component:ProtectedLayout,
+    children:[
+      {
+        index:true,
+        Component:OverviewPage
+      }
+    ]
+  }
 ]);
+
+export default router;
