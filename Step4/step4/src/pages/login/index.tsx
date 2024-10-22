@@ -9,6 +9,7 @@ const LoginPage: React.FC = () => {
   const [authError, setAuthError] = useState(false);
   const navigate = useNavigate();
 
+  
   const { mutate: login } = useMutation({
     mutationFn: authLoginPost,
     onSuccess: (res) => {
@@ -21,6 +22,7 @@ const LoginPage: React.FC = () => {
       if (err.response && err.response.status === 401) {
         setAuthError(true);
         console.error("Unauthorized!");
+        
       } else {
         console.error("Error:", err.message);
       }
