@@ -1,23 +1,19 @@
 export const setAccessToken = (access_token: string): void => {
-  localStorage.setItem("Access Token:", access_token);
+  localStorage.setItem("access_token", access_token);
 };
 
 export const getAccessToken = (): string | null => {
-  return typeof localStorage === "object"
-    ? localStorage.getItem("access_token")
-    : null;
+  return localStorage.getItem("access_token");
 };
-export const removeAccessToken = (): void => {
-  if (getAccessToken !== null) localStorage.removeItem("access_token");
+export const removeAccessToken = () => {
+  localStorage.removeItem("access_token");
 };
-export const setRefreshToken = (refresh_token: string): void => {
-  localStorage.setItem("Refresh Token:", refresh_token);
+export const setRefreshToken = (refresh_token: string) => {
+  localStorage.setItem("refresh_token", refresh_token);
 };
-export const getRefreshToken = (): string | null => {
-  return typeof localStorage === "object"
-    ? localStorage.getItem("refresh_token")
-    : null;
+export const getRefreshToken = () => {
+  localStorage.getItem("refresh_token");
 };
-export const removeRefreshToken = (): void => {
-  if (getRefreshToken !== null) localStorage.removeItem("refresh_token");
+export const removeRefreshToken = () => {
+  localStorage.removeItem("refresh_token");
 };

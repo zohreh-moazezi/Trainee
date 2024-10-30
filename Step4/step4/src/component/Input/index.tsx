@@ -1,60 +1,49 @@
 import React from "react";
 import * as Styled from "./styled";
-import { Field, FieldProps, FormikErrors, FormikTouched } from "formik";
+import { Field, FieldProps } from "formik";
 import Label from "@component/Label";
 
-interface InputProps {
+interface InputProps
+  extends React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > {
   name: string;
   placeholder: string;
   type: string;
   labelKey: string;
-  errors: FormikErrors<any>;
-  touched: FormikTouched<any>;
-  authError: boolean;
+  error?: string;
+  authenticationError: boolean;
 }
 
-const Input: React.FC<InputProps> = (props) => {
+const Input: React.FC<InputProps> = ({
+  name,
+  placeholder,
+  type,
+  labelKey,
+  error,
+  authenticationError,
+  ...rest
+}) => {
+  const hasError = !!error || authenticationError;
   return (
-    <>
-      <Styled.Inputs>
-        <Styled.TextField>
-          <Field name={props.name}>
-            {({ field }: FieldProps) => (
-              <Styled.InputFields
-                {...field}
-                placeholder={props.placeholder}
-                type={props.type}
-                $error={
-                  !!(
-                    (props.errors[props.name] && props.touched[props.name]) ||
-                    props.authError
-                  )
-                }
-              />
-            )}
-          </Field>
-
-          {(props.errors[props.name] && props.touched[props.name]) ||
-          props.authError ? (
-            <Styled.HelperText>
-              {props.errors[props.name] as string}
-            </Styled.HelperText>
-          ) : null}
-          <Label
-            labelKey={props.labelKey}
-            $error={
-              !!(
-                (props.errors[props.name] && props.touched[props.name]) ||
-                props.authError
-              )
-            }
-          />
-          <Styled.FormHelperText>
-            <Styled.HelperText />
-          </Styled.FormHelperText>
-        </Styled.TextField>
-      </Styled.Inputs>
-    </>
+    <Styled.Inputs>
+      <Styled.TextField>
+        <Field name={name}>
+          {({ field }: FieldProps) => (
+            <Styled.InputFields
+              {...field}
+              {...rest}
+              placeholder={placeholder}
+              type={type}
+              $error={hasError}
+            />
+          )}
+        </Field>
+        {error && <Styled.HelperText>{error}</Styled.HelperText>}
+        <Label labelKey={labelKey} $error={hasError} />
+      </Styled.TextField>
+    </Styled.Inputs>
   );
 };
 

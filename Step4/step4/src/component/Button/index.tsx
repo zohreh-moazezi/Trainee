@@ -7,11 +7,7 @@ interface ButtonProp {
 }
 
 const Button: React.FC<ButtonProp> = ({ label, type = "button" }) => {
-  return (
-    <>
-      <Styled.LoginButton type={type}>{label}</Styled.LoginButton>
-    </>
-  );
+  return <Styled.LoginButton type={type}>{label}</Styled.LoginButton>;
 };
 
 export default Button;

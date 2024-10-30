@@ -8,11 +8,36 @@ import { Formik, Form as LoginForm } from "formik";
 import { loginSchema } from "./services/schema";
 
 interface FormProp {
-  login: (values: { username: string; password: string }) => void;
-  authError: boolean;
+  onSubmit: (values: { username: string; password: string }) => void;
+  error: {
+    validation?: Record<string, string>;
+    authentication?: string | null;
+  };
+  setError: React.Dispatch<
+    React.SetStateAction<{
+      validation?: Record<string, string>;
+      authentication?: string | null;
+    }>
+  >;
 }
 
-const Form: React.FC<FormProp> = ({ login, authError }) => {
+const Form: React.FC<FormProp> = ({ onSubmit, error, setError }) => {
+  const handleValidate = async (values: {
+    username: string;
+    password: string;
+  }) => {
+    setError((prevError) => ({ ...prevError, validation: {} }));
+    try {
+      await loginSchema.validate(values, { abortEarly: false });
+      onSubmit(values);
+    } catch (validationError: any) {
+      const newErrors: Record<string, string> = {};
+      validationError.inner.forEach((err: any) => {
+        if (err.path) newErrors[err.path] = err.message;
+      });
+      setError((prevError) => ({ ...prevError, validation: newErrors }));
+    }
+  };
   return (
     <>
       <Logo />
@@ -23,33 +48,39 @@ const Form: React.FC<FormProp> = ({ login, authError }) => {
             username: "",
             password: "",
           }}
-          validationSchema={loginSchema}
-          onSubmit={(values) => login(values)}
+          validate={handleValidate}
+          validateOnChange={false}
+          validateOnBlur={false}
+          onSubmit={(values) => {
+            setError((prev) => ({ ...prev, authentication: null }));
+            onSubmit(values);
+          }}
         >
-          {({ errors, touched }) => (
-            <LoginForm>
-              <Input
-                name="username"
-                type="text"
-                placeholder=""
-                errors={errors}
-                touched={touched}
-                labelKey="Username"
-                authError={authError}
-              />
-              <Input
-                name="password"
-                type="password"
-                placeholder=""
-                errors={errors}
-                touched={touched}
-                labelKey="Password"
-                authError={authError}
-              />
+          <LoginForm>
+            {error.authentication && (
+              <Styled.FormHelperText>
+                <Styled.HelperText>{error.authentication}</Styled.HelperText>
+              </Styled.FormHelperText>
+            )}
+            <Input
+              name="username"
+              type="text"
+              placeholder=""
+              labelKey="Username"
+              error={error.validation?.username}
+              authenticationError={!!error.authentication}
+            />
+            <Input
+              name="password"
+              type="password"
+              placeholder=""
+              labelKey="Password"
+              error={error.validation?.password}
+              authenticationError={!!error.authentication}
+            />
 
-              <Button label="LOGIN" type="submit" />
-            </LoginForm>
-          )}
+            <Button label="LOGIN" type="submit" />
+          </LoginForm>
         </Formik>
       </Styled.LoginForm>
     </>

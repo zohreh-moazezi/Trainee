@@ -8,11 +8,9 @@ interface LabelProps {
 
 const Label: React.FC<LabelProps> = ({ labelKey, $error }) => {
   return (
-    <>
-      <Styled.Labels className="label" $error={!!$error}>
-        {labelKey}
-      </Styled.Labels>
-    </>
+    <Styled.Labels className="label" $error={!!$error}>
+      {labelKey}
+    </Styled.Labels>
   );
 };
 
