@@ -1,14 +1,14 @@
+import { getAccessToken } from "@utils/token";
 import React, { ReactNode } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 
 type ProtectedLayoutProps = {
-  isAuthenticated: boolean;
   children?: ReactNode;
 };
 
-export const ProtectedLayout: React.FC<ProtectedLayoutProps> = ({
-  isAuthenticated,
-}) => {
+export const ProtectedLayout: React.FC<ProtectedLayoutProps> = () => {
+  const isAuthenticated = !!getAccessToken();
+
   if (!isAuthenticated) {
     return <Navigate to="/" />;
   }

@@ -1,13 +1,12 @@
-import React from "react";
+import React, { ReactNode, ButtonHTMLAttributes } from "react";
 import * as Styled from "./styled";
 
-interface ButtonProp {
-  label: string;
-  type: "button" | "reset" | "submit";
+interface ButtonProp extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children?: ReactNode;
 }
 
-const Button: React.FC<ButtonProp> = ({ label, type = "button" }) => {
-  return <Styled.LoginButton type={type}>{label}</Styled.LoginButton>;
+const Button: React.FC<ButtonProp> = ({ children, ...props }) => {
+  return <Styled.LoginButton {...props}>{children}</Styled.LoginButton>;
 };
 
 export default Button;

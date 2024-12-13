@@ -5,11 +5,7 @@ import * as Styled from "./styled";
 const Logo = () => {
   return (
     <Styled.CardMedia>
-      <Styled.Asset>
-        <Styled.TypeMark>
-          <Styled.Image src={logo} />
-        </Styled.TypeMark>
-      </Styled.Asset>
+      <Styled.Image src={logo} />
     </Styled.CardMedia>
   );
 };

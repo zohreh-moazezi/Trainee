@@ -8,21 +8,20 @@ import { useNavigate } from "react-router-dom";
 export const LoginPage: React.FC = () => {
   const [error, setError] = useState<{
     validation?: Record<string, string>;
-    authentication?: string | null;
+    authentication?: string;
   }>({});
+
   const navigate = useNavigate();
 
   const { mutate: login } = useMutation({
     mutationFn: authLoginPost,
-    onSuccess: (res) => {
+    onSuccess: () => {
       setError({});
-      console.log("Access Token:", res.access_token);
-      console.log("Refresh Token:", res.refresh_token);
       navigate("/overview");
     },
     onError: (err: any) => {
-      if (err.response && err.response.status === 401) {
-        setError({ authentication: err.message });
+      if (err.status === 401) {
+        setError({ authentication: err.data?.message });
       }
     },
   });

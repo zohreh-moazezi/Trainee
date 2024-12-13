@@ -4,19 +4,19 @@ import Logo from "../Logo";
 import Texts from "../Texts";
 import Input from "@component/Input";
 import * as Styled from "./styled";
-import { Formik, Form as LoginForm } from "formik";
+import { Formik, Field, Form as LoginForm } from "formik";
 import { loginSchema } from "./services/schema";
 
 interface FormProp {
   onSubmit: (values: { username: string; password: string }) => void;
   error: {
     validation?: Record<string, string>;
-    authentication?: string | null;
+    authentication?: string;
   };
   setError: React.Dispatch<
     React.SetStateAction<{
       validation?: Record<string, string>;
-      authentication?: string | null;
+      authentication?: string;
     }>
   >;
 }
@@ -38,6 +38,7 @@ const Form: React.FC<FormProp> = ({ onSubmit, error, setError }) => {
       setError((prevError) => ({ ...prevError, validation: newErrors }));
     }
   };
+
   return (
     <>
       <Logo />
@@ -52,35 +53,40 @@ const Form: React.FC<FormProp> = ({ onSubmit, error, setError }) => {
           validateOnChange={false}
           validateOnBlur={false}
           onSubmit={(values) => {
-            setError((prev) => ({ ...prev, authentication: null }));
-            onSubmit(values);
+            handleValidate(values);
           }}
         >
-          <LoginForm>
-            {error.authentication && (
-              <Styled.FormHelperText>
-                <Styled.HelperText>{error.authentication}</Styled.HelperText>
-              </Styled.FormHelperText>
-            )}
-            <Input
-              name="username"
-              type="text"
-              placeholder=""
-              labelKey="Username"
-              error={error.validation?.username}
-              authenticationError={!!error.authentication}
-            />
-            <Input
-              name="password"
-              type="password"
-              placeholder=""
-              labelKey="Password"
-              error={error.validation?.password}
-              authenticationError={!!error.authentication}
-            />
+          {({ handleSubmit }) => (
+            <LoginForm onSubmit={handleSubmit}>
+              <Field
+                name="username"
+                type="text"
+                as={Input}
+                id="username"
+                placeholder=""
+                error={error.validation?.username}
+                hasError={
+                  !!error.validation?.username || !!error.authentication
+                }
+                isAuthError={!!error.authentication}
+              />
 
-            <Button label="LOGIN" type="submit" />
-          </LoginForm>
+              <Field
+                name="password"
+                type="password"
+                as={Input}
+                id="password"
+                placeholder=""
+                error={error.validation?.password}
+                hasError={
+                  !!error.validation?.password || !!error.authentication
+                }
+                isAuthError={!!error.authentication}
+              />
+
+              <Button type="submit">login</Button>
+            </LoginForm>
+          )}
         </Formik>
       </Styled.LoginForm>
     </>

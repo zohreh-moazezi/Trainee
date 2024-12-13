@@ -9,7 +9,7 @@ axiosInstance.interceptors.request.use(
   (config) => {
     const accessToken = getAccessToken();
     if (accessToken) {
-      config.headers["Authorization"] = `Bearer${accessToken} `;
+      config.headers["Authorization"] = `Bearer ${accessToken}`;
     }
     return config;
   },
@@ -25,7 +25,7 @@ axiosInstance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
     if (error.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
+      originalRequest._retry = false;
       try {
         const refreshToken = getRefreshToken();
         const response = await axios.post("auth/refresh-token", {

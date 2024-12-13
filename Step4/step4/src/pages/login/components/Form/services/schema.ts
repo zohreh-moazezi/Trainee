@@ -1,11 +1,11 @@
-import * as Yup from "yup";
+import { object, string } from "yup";
 
-export const loginSchema = Yup.object().shape({
-  username: Yup.string()
+export const loginSchema = object().shape({
+  username: string()
     .min(5, "Too Short! ")
     .max(32, "Too Long!")
     .required("Enter Username"),
-  password: Yup.string()
+  password: string()
     .min(8, "Too Short! ")
     .max(32, "Too Long!")
     .required("Enter Password"),

@@ -1,15 +1,15 @@
-import React from "react";
+import React, { LabelHTMLAttributes, ReactNode } from "react";
 import * as Styled from "./styled";
 
-interface LabelProps {
-  labelKey: string;
-  $error?: boolean;
+interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
+  isAuthError?: boolean;
+  children: ReactNode;
 }
 
-const Label: React.FC<LabelProps> = ({ labelKey, $error }) => {
+const Label: React.FC<LabelProps> = ({ children, isAuthError, ...props }) => {
   return (
-    <Styled.Labels className="label" $error={!!$error}>
-      {labelKey}
+    <Styled.Labels {...props} isAuthError={isAuthError} className="label">
+      {children}
     </Styled.Labels>
   );
 };
