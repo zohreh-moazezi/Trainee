@@ -1,8 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Labels = styled.label<{isAuthError?:boolean}>`
-color: ${({ isAuthError }) => (isAuthError ? "var(--error-color)" : "var(--second-text)")};
-line-height: 1.5rem;
+export const Labels = styled.label<{ isAuthError?: boolean }>`
+  color: ${({ isAuthError }) =>
+    isAuthError ? 'var(--error-color)' : 'var(--second-text)'};
+  line-height: 1.5rem;
   position: absolute;
   pointer-events: none;
   left: 0.75rem;

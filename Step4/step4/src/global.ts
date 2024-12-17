@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 export const Global = createGlobalStyle`
 :root {
@@ -29,7 +29,8 @@ export const Global = createGlobalStyle`
   body,
   html {
     height: 100dvh;
-    background-color: #f5f5f5;line-height: 1;
+    background-color: #f5f5f5;
+    line-height: 1;
   }
 
   #root{

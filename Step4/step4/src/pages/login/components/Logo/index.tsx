@@ -1,6 +1,6 @@
-import React from "react";
-import logo from "@assets/logo.png";
-import * as Styled from "./styled";
+import React from 'react';
+import logo from '@assets/logo.png';
+import * as Styled from './styled';
 
 const Logo = () => {
   return (

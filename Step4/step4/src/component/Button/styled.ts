@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const LoginButton = styled.button`
   width: 100%;
   padding: 0.5rem 1.375rem;
-  border-radius:0.25rem;
+  border-radius: 0.25rem;
   background-color: var(--button-color);
   color: var(--main-color);
   border: none;
@@ -13,8 +13,8 @@ export const LoginButton = styled.button`
   text-transform: uppercase;
   box-shadow:
     0 3px 1px -2px var(--first-shadow),
-    0 2px 2px 0px var(--second-shadow),
-    0 1px 5px 0px var(--third-shadow);
+    0 2px 2px 0 var(--second-shadow),
+    0 1px 5px 0 var(--third-shadow);
 
   font-family: var(--main-font);
   font-size: 0.94rem;

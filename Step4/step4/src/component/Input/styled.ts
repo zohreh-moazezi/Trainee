@@ -1,9 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const TextField = styled.div`
   position: relative;
   padding: 1rem 0 0 0;
-  
 `;
 
 export const InputFields = styled.input<{ hasError?: boolean }>`

@@ -1,15 +1,15 @@
-import axios from "axios";
-import { getAccessToken, getRefreshToken, setAccessToken } from "@utils/token";
+import axios from 'axios';
+import { getAccessToken, getRefreshToken, setAccessToken } from '@utils/token';
 
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:4200/",
+  baseURL: 'http://localhost:4200/',
 });
 
 axiosInstance.interceptors.request.use(
   (config) => {
     const accessToken = getAccessToken();
     if (accessToken) {
-      config.headers["Authorization"] = `Bearer ${accessToken}`;
+      config.headers['Authorization'] = `Bearer ${accessToken}`;
     }
     return config;
   },
@@ -28,15 +28,15 @@ axiosInstance.interceptors.response.use(
       originalRequest._retry = false;
       try {
         const refreshToken = getRefreshToken();
-        const response = await axios.post("auth/refresh-token", {
+        const response = await axios.post('auth/refresh-token', {
           token: refreshToken,
         });
         const { accessToken } = response.data;
         setAccessToken(accessToken);
-        originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
+        originalRequest.headers['Authorization'] = `Bearer ${accessToken}`;
         return axiosInstance(originalRequest);
       } catch (refreshError) {
-        console.error("Refresh token failed", refreshError);
+        console.error('Refresh token failed', refreshError);
       }
     }
     return Promise.reject(error);

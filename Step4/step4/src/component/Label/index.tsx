@@ -1,5 +1,5 @@
-import React, { LabelHTMLAttributes, ReactNode } from "react";
-import * as Styled from "./styled";
+import React, { LabelHTMLAttributes, ReactNode } from 'react';
+import * as Styled from './styled';
 
 interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   isAuthError?: boolean;

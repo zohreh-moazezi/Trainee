@@ -1,11 +1,11 @@
-import React from "react";
-import Button from "@component/Button";
-import Logo from "../Logo";
-import Texts from "../Texts";
-import Input from "@component/Input";
-import * as Styled from "./styled";
-import { Formik, Field, Form as LoginForm } from "formik";
-import { loginSchema } from "./services/schema";
+import React from 'react';
+import Button from '@component/Button';
+import Logo from '../Logo';
+import Texts from '../Texts';
+import Input from '@component/Input';
+import * as Styled from './styled';
+import { Formik, Field, Form as LoginForm } from 'formik';
+import { loginSchema } from './services/schema';
 
 interface FormProp {
   onSubmit: (values: { username: string; password: string }) => void;
@@ -46,15 +46,13 @@ const Form: React.FC<FormProp> = ({ onSubmit, error, setError }) => {
       <Styled.LoginForm>
         <Formik
           initialValues={{
-            username: "",
-            password: "",
+            username: '',
+            password: '',
           }}
           validate={handleValidate}
           validateOnChange={false}
           validateOnBlur={false}
-          onSubmit={(values) => {
-            handleValidate(values);
-          }}
+          onSubmit={handleValidate}
         >
           {({ handleSubmit }) => (
             <LoginForm onSubmit={handleSubmit}>

@@ -1,5 +1,5 @@
 {
-  "extends":"./tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
@@ -16,7 +16,6 @@
     "jsx": "react-jsx",
     "incremental": true,
 
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
@@ -25,12 +24,12 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": "./src",
     "paths": {
-      "@component/*":["component/*"],
-      "@pages/*":["pages/*"],
-      "@assets/*":["assets/*"],
-      "@api/*":["api/*"],
-      "@theme/*":["theme/*"],
-      "@utils/*":["utils/*"]
+      "@component/*": ["component/*"],
+      "@pages/*": ["pages/*"],
+      "@assets/*": ["assets/*"],
+      "@api/*": ["api/*"],
+      "@theme/*": ["theme/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "include": ["src", "eslintrc.js"]

@@ -1,6 +1,6 @@
-import { getAccessToken } from "@utils/token";
-import React, { ReactNode } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { getAccessToken } from '@utils/token';
+import React, { ReactNode } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
 type ProtectedLayoutProps = {
   children?: ReactNode;

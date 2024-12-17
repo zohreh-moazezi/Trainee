@@ -1,6 +1,6 @@
-import React from "react";
-import * as Styled from "./styled";
-import Label from "@component/Label";
+import React from 'react';
+import * as Styled from './styled';
+import Label from '@component/Label';
 
 interface InputProps
   extends React.DetailedHTMLProps<
