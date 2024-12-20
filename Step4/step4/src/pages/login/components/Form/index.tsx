@@ -63,10 +63,7 @@ const Form: React.FC<FormProp> = ({ onSubmit, error, setError }) => {
                 id="username"
                 placeholder=""
                 error={error.validation?.username}
-                hasError={
-                  !!error.validation?.username || !!error.authentication
-                }
-                isAuthError={!!error.authentication}
+                hasError={!!error.authentication}
               />
 
               <Field
@@ -76,10 +73,7 @@ const Form: React.FC<FormProp> = ({ onSubmit, error, setError }) => {
                 id="password"
                 placeholder=""
                 error={error.validation?.password}
-                hasError={
-                  !!error.validation?.password || !!error.authentication
-                }
-                isAuthError={!!error.authentication}
+                hasError={!!error.authentication}
               />
 
               <Button type="submit">login</Button>

@@ -12,7 +12,7 @@ export const setRefreshToken = (refresh_token: string) => {
   localStorage.setItem('refresh_token', refresh_token);
 };
 export const getRefreshToken = () => {
-  localStorage.getItem('refresh_token');
+  return localStorage.getItem('refresh_token');
 };
 export const removeRefreshToken = () => {
   localStorage.removeItem('refresh_token');

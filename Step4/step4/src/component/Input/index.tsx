@@ -9,20 +9,14 @@ interface InputProps
   > {
   error?: string;
   hasError?: boolean;
-  isAuthError?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({
-  error,
-  hasError,
-  isAuthError,
-  ...props
-}) => {
+const Input: React.FC<InputProps> = ({ error, hasError, ...props }) => {
   return (
     <Styled.TextField>
-      <Styled.InputFields {...props} hasError={hasError} />
+      <Styled.InputFields {...props} hasError={hasError} error={error} />
       {error && <Styled.HelperText>{error}</Styled.HelperText>}
-      <Label isAuthError={isAuthError}>{props.name}</Label>
+      <Label hasError={hasError}>{props.name}</Label>
     </Styled.TextField>
   );
 };
