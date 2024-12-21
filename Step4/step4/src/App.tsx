@@ -1,14 +1,22 @@
 import React from 'react';
 import { RouterProvider } from 'react-router-dom';
-import { router } from './pages/Router';
+import router from './pages/router';
 import { ThemeProvider } from 'styled-components';
-import { light, dark } from './theme';
+import { light } from './theme';
 import { Global } from './global';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+const queryClient = new QueryClient();
+
 const App = () => {
   return (
     <ThemeProvider theme={light}>
       <Global />
-     <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools />
+      </QueryClientProvider>
     </ThemeProvider>
   );
 };
