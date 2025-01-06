@@ -16,7 +16,6 @@ export const InputFields = styled.input<{ error?: string; hasError?: boolean }>`
     box-shadow: 0 0 0.31rem rgba(12, 122, 239, 0.5);
     outline: none;
   }
-
   &:focus ~ .label,
   &:not(:placeholder-shown) ~ .label {
     top: 0.4rem;
