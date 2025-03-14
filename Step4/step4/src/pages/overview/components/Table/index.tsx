@@ -30,6 +30,7 @@ const BikerTable: React.FC<BikerDataProps> = ({ data }) => {
   return (
     <Styled.Container>
       <table>
+        
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
