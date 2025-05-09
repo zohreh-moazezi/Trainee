@@ -7,7 +7,7 @@ export const Content = styled.div`
   padding: 0.5rem 2.5rem;
   font-family: var(--main-font);
 `;
-export const FirstText = styled.p`
+export const FirstText = styled.h6`
   font-weight: 700;
   font-size: 1.4rem;
   color: var(--first-text);

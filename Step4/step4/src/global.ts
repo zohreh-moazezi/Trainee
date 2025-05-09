@@ -16,6 +16,7 @@ export const Global = createGlobalStyle`
     --border-color:#0000003b;
     --input-color:#000;
     --error-text: #d32f2f;
+    --background-color: #fafafa
   }
 
   *,
@@ -40,8 +41,5 @@ export const Global = createGlobalStyle`
     justify-content: center;
   }
 
-  table{
-	  border-collapse: collapse;
-	  border-spacing: 0;
-}
+ 
 `;

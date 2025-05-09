@@ -1,7 +1,6 @@
-import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { LoginPage } from './login';
-import OverviewPage from './overview/OverviewPage';
+import OverviewPage from './overview/index';
 import { ProtectedLayout } from 'layout/protectedLayout';
 
 const router = createBrowserRouter([

@@ -1,6 +1,6 @@
-import React from 'react';
 import { RouterProvider } from 'react-router-dom';
 import router from './pages/router';
+import 'leaflet/dist/leaflet.css';
 import { ThemeProvider } from 'styled-components';
 import { light } from './theme';
 import { Global } from './global';
